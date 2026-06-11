@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('works', function (Blueprint $table) {
             $table->id();
             $table->string('openalex_id')->unique();
-            $table->string('title')->nullable();
+            $table->text('title')->nullable();
             $table->string('doi')->nullable();
             $table->unsignedSmallInteger('publication_year')->nullable();
             $table->boolean('is_open_access')->default(false);

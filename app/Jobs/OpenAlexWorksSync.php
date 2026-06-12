@@ -3,6 +3,7 @@
 namespace App\Jobs;
 
 use App\Models\Work;
+use App\Services\OpenAlex\OpenAlexService;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Support\Facades\Http;
@@ -18,10 +19,7 @@ class OpenAlexWorksSync implements ShouldQueue
 
     public function handle(): void
     {
-        $url = 'https://api.openalex.org/works?page='.$this->page;
-        dump($url);
-        $worksResponse = Http::get($url);
-        $works = $worksResponse->json('results');
+        $works = (new OpenAlexService())->getWorks($this->page);
 
         if (empty($works)) {
             return;

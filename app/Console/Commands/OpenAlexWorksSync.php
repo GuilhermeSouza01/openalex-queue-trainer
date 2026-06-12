@@ -6,7 +6,7 @@ use Illuminate\Console\Attributes\Description;
 use Illuminate\Console\Attributes\Signature;
 use Illuminate\Console\Command;
 
-#[Signature('app:open-alex-works-sync')]
+#[Signature('openalex:open-alex-works-sync')]
 #[Description('Command description')]
 class OpenAlexWorksSync extends Command
 {

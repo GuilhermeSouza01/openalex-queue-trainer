@@ -19,15 +19,15 @@ class OpenAlexWorksSync implements ShouldQueue
     public function handle(): void
     {
         $url = 'https://api.openalex.org/works?page='.$this->page;
-        $worksResponse = Http::get($url);
         dump($url);
+        $worksResponse = Http::get($url);
         $works = $worksResponse->json('results');
 
         if (empty($works)) {
             return;
         }
         foreach ($works as $work) {
-          OpenAlexWorksStore::dispatch($work);
+          OpenAlexWorkSync::dispatch($work['id']);
         }
         OpenAlexWorksSync::dispatch($this->page + 1);
     }

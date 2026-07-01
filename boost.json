@@ -5,6 +5,7 @@
     "cloud": false,
     "skills": [
         "laravel-best-practices",
+        "configuring-horizon",
         "pest-testing",
         "tailwindcss-development"
     ]

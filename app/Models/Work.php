@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Work extends Model
 {
@@ -17,4 +18,10 @@ class Work extends Model
         'created_date',
         'updated_date',
     ];
+
+    public function topics(): BelongsToMany
+    {
+        return $this->belongsToMany(Topic::class, 'topic_work')
+            ->withPivot('score');
+    }
 }
